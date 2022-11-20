@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/main.css">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');</style>
+</head>
+
+<body>
+<div class="container">
+    <div class="container-wrapper">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2  class="text_center" >Predictive analysis</h2>
+            <h3>What Is the Car Name?</h3>
+            <select name="name" id="name" required="required">
+                {% for name in carname %}
+                            <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+            <h3>Year</h3>
+            <input id="first" name="year" type="number ">
+            <h3>How Many Kilometers Drived?</h3><input id="third" name="km_driven" required="required">
+            <h3>How much owners previously had the car?</h3><select name="owner" id="owner" required="required">
+                <option value="First Owner">First Owner</option>
+                <option value="Second Owner">Second Owner</option>
+                <option value="Third Owner">Third Owner</option>
+                <option value="Fourth & Above Owner">Fourth & Above Owner</option>
+                <option value="Test Drive Car">Test Drive Car</option>
+            </select>
+            <h3>What Is the Fuel type?</h3><select name="fuel_type" id="fuel" required="required">
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="LPG">LPG</option>
+                <option value="CNG">CNG</option>
+                <option value="Electric">Electric</option>
+            </select>
+            <h3>Are you A Dealer or Individual</h3><select name="seller_type" id="resea" required="required">
+                <option value="Dealer">Dealer</option>
+                <option value="Individual">Individual</option>
+                <option value="Trustmark Dealer">Trustmark Dealer</option>
+            </select>
+
+            <h3>Transmission type</h3><select name="transmission" id="research" required="required">
+                <option value="Manual">Manual Car</option>
+                <option value="Automatic">Automatic Car</option>
+            </select>
+         
+            <div class="submit-button">
+                <button id="sub" type="submit ">Calculate the Selling Price</button>
+            </div>
+           
+        </form>
+        
+    </div>
+    <h3 class="text_center">{{ prediction_text }}<h3></h3>
+</div>
+
+</body>
+
+</html>
